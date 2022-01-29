@@ -74,6 +74,3 @@ def generate_QuantumCircuit(input_str: str) -> QuantumCircuit:
     # Add the measurements into the circuit
     qc.measure(ancilla_qubits,creg)
     return qc
-    
-qc = generate_QuantumCircuit("Y4")
-qc.draw("mpl")
