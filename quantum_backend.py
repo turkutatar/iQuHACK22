@@ -2,9 +2,19 @@ from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister, execute, 
 # import numpy as np
 
 # To-Do keep track of used inputs.
-def generate_QuantumCircuit(input_str: str):
+def generate_QuantumCircuit(input_str: str) -> QuantumCircuit:
     """
     Returns a QuantumCircuit given an input string containing the information about the data qubit error.
+
+    Parameter
+    ---------
+        input_str: str
+            Input string specifying the type of error on the set of 5 data qubits. In this case it is limited to the set of single-qubit Pauli errors.
+
+    Return
+    ------
+        qc: qiskit.circuit.quantumcircuit.QuantumCircuit
+            A QuantumCircuit object representing the [[5,1,3]] circuit with artificially injected single-qubit error.
     """
     input_str = input_str.upper() # Normalise the input string to always be uppercase.
     valid_inputs = ["I","X0","Y0","Z0","X1","Y1","Z1","X2","Y2","Z2","X3","Y3","Z3","X4","Y4","Z4"]
@@ -19,8 +29,6 @@ def generate_QuantumCircuit(input_str: str):
 
     # Encoding the 5 data qubits into 1 logical qubit.
     qc.h(data_qubits)
-    # for i in range(5):
-    #     qc.cz(data_qubits[i],data_qubits[(i+1)%5])
     qc.cz(data_qubits[0],data_qubits[1])
     qc.cz(data_qubits[2],data_qubits[3])
     qc.cz(data_qubits[1],data_qubits[2])
