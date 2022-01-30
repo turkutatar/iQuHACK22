@@ -18,7 +18,7 @@
 QX single-node simulator Quantum-Inspire backend
 
 ### QEC Preliminaries 
-The [[5,1,3]] code is a five qubit quantum error correction code (QECC) which uses 9 qubits in total, 5 data qubits and 4 ancilla qubits. This code can handle at most one arbitrary Pauli error on a single qubit, i.e. X/Y/Z error on any one of the qubits.
+The [[5,1,3]] code is a five qubit quantum error correction code (QECC) which uses 9 qubits in total: 5 physical qubits and 4 ancilla qubits and encodes one logical qubit. This code can correct an arbitrary single qubit error, e.g. X/Y/Z error on any of physical qubits.
 
 ### Layout 
 The basic layout of the game is a 4x4 grid which contains numbers ranging from 0 to 15, i.e. 0000 to 1111 in binary. Those numbers correspond to all possible error symdromes. In the beginning the grid is randomly generated, and each player has a separate grid.
