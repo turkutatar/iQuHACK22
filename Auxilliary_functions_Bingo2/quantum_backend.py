@@ -1,4 +1,4 @@
-from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister, execute, BasicAer
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister, execute
 from quantuminspire.qiskit import QI
 
 def get_QI_backend(backend_type = "QX single-node simulator"):
