@@ -1,4 +1,4 @@
-# iQuHACK22
+# iQuHACK22 QuTech Quantum Error Correction Challenge
 
 # Project : QEC Bingo Game
 
