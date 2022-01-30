@@ -4,7 +4,7 @@
 
 ## Team
 * Abhay Kamble,
-* Bernard Wo,
+* [Bernard Wo](https://github.com/bernwo) MSc Applied Physics @ Delft University of Technology,
 * Oskar Slovik,
 * Wridhdhisom Karar,
 * Fatma Türkü Tatar, Junior Electrical Engineering Undergraduate, Cankaya University
