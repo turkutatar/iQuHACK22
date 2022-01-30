@@ -1,57 +1,38 @@
-import os
 import pandas as pd
 import numpy as np
-
-class bcolors: # https://stackoverflow.com/questions/287871/how-to-print-colored-text-to-the-terminal
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
-TRIGGERED = "XX"
-
-def isWin(my_array):
-    output = False
-    for i in range(4):
-        if np.all(my_array[:,i]==TRIGGERED):
-            output = True
-            break
-    if not output:
-        for i in range(4):
-            if np.all(my_array[i,:]==TRIGGERED):
-                output = True
-                break
-    if not output:
-        if np.all(np.diag(my_array)==TRIGGERED):
-            output = True
-    if not output:
-        if np.all(np.diag(np.fliplr(my_array))==TRIGGERED):
-            output = True
-    return output
-        
-
-clear = lambda: os.system('cls' if os.name == 'nt' else 'clear') or None # function to clear interpreter terminal.
-clear()
+import helper_functions as hf
+import quantum_backend as qb
 
 
-my_array = np.array([str(i) for i in range(16)])
-# print(my_array)
-np.random.shuffle(my_array)
-my_array = my_array.reshape([4,4])
-df = pd.DataFrame(my_array)
+if __name__ == '__main__':
+    hf.clear()
+    default_valid_inputs = ["I","X0","Y0","Z0","X1","Y1","Z1","X2","Y2","Z2","X3","Y3","Z3","X4","Y4","Z4"]
+    backend = qb.get_QI_backend(backend_type="QX single-node simulator")
 
-while True:
-    print(df.to_string(index=False,header=False))
-    if isWin(my_array):
-        break
-    ans = input("\nInsert number: ")
-    clear()
-    # print(my_array[my_array==ans])
-    my_array[my_array==ans] = TRIGGERED
+    my_array = np.array([str(i) for i in range(16)])
+    np.random.shuffle(my_array) # mutates the array
+    my_array = my_array.reshape([4,4])
     df = pd.DataFrame(my_array)
-print("\n🎉🥳 \033[92mYou won! Congratulations!\033[0m 🎉🥳")
+
+    while True:
+        print(df.to_string(index=False,header=False))
+        if hf.isWin(my_array):
+            break
+        while True: # Get user input.
+            input_error = input("\nInsert single-qubit error: ")
+            if input_error in default_valid_inputs:
+                print("Running circuit on Quantum-Inspire...")
+                break
+            else:
+                print("Please enter valid inputs only.")
+        qc_job = qb.execute_QuantumCircuit(input_error,backend=backend,shots=256)
+        result_dict = qc_job.result().get_counts()
+        ans_bin = max(result_dict, key=result_dict.get)
+        ans = str(int(ans_bin, 2))
+
+        hf.clear()
+
+        my_array[my_array==ans] = hf.TRIGGERED
+        df = pd.DataFrame(my_array)
+    print(f"\n🎉🥳 {hf.OKGREEN}You won! Congratulations!{hf.ENDC} 🎉🥳")
+
