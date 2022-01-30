@@ -1,38 +1,56 @@
-import pandas as pd
-import numpy as np
 import helper_functions as hf
 import quantum_backend as qb
 
-
 if __name__ == '__main__':
     hf.clear()
-    default_valid_inputs = ["I","X0","Y0","Z0","X1","Y1","Z1","X2","Y2","Z2","X3","Y3","Z3","X4","Y4","Z4"]
+    default_valid_inputs = ['I', 'X0', 'X1', 'X2', 'X3', 'X4', 'Y0', 'Y1', 'Y2', 'Y3', 'Y4', 'Z0', 'Z1', 'Z2', 'Z3',
+                            'Z4']
+    valid_inputs = default_valid_inputs
     backend = qb.get_QI_backend(backend_type="QX single-node simulator")
 
-    my_array = np.array([str(i) for i in range(16)])
-    np.random.shuffle(my_array) # mutates the array
-    my_array = my_array.reshape([4,4])
-    df = pd.DataFrame(my_array)
+    board_1 = hf.initialize_board()
+    board_2 = hf.initialize_board()
 
     while True:
-        print(df.to_string(index=False,header=False))
-        if hf.isWin(my_array):
-            break
-        while True: # Get user input.
-            input_error = input("\nInsert single-qubit error: ")
-            if input_error in default_valid_inputs:
-                print("Running circuit on Quantum-Inspire...")
-                break
+
+        while True:
+            hf.print_boards([board_1])
+
+            input_error = input("\nPlayer 1 - Please insert single-qubit error: ")
+            hf.clear()
+            if input_error not in valid_inputs:
+                print("Wrong move. Please enter valid inputs only. ")
             else:
-                print("Please enter valid inputs only.")
-        qc_job = qb.execute_QuantumCircuit(input_error,backend=backend,shots=256)
-        result_dict = qc_job.result().get_counts()
-        ans_bin = max(result_dict, key=result_dict.get)
-        ans = str(int(ans_bin, 2))
+                print("Running circuit on Quantum-Inspire...")
+                valid_inputs.remove(input_error)
+                break
+        move = hf.get_error_syndrome(input_error, backend)
 
-        hf.clear()
+        hf.update_board(board_1, move)
+        hf.update_board(board_2, move)
 
-        my_array[my_array==ans] = hf.TRIGGERED
-        df = pd.DataFrame(my_array)
-    print(f"\n🎉🥳 {hf.OKGREEN}You won! Congratulations!{hf.ENDC} 🎉🥳")
+        input_error = hf.silly_bot(valid_inputs)
 
+        print("Running circuit on Quantum-Inspire...")
+        valid_inputs.remove(input_error)
+
+        move = hf.get_error_syndrome(input_error, backend)
+
+        hf.update_board(board_1, move)
+        hf.update_board(board_2, move)
+
+        player_1_wins = hf.isWin(board_1)
+        player_2_wins = hf.isWin(board_2)
+
+        if player_1_wins and player_2_wins:
+            hf.print_boards([board_1, board_2])
+            print(f"\n🎉🥳 {hf.OKCYAN}Tie! Maybe try again?{hf.ENDC} 🎉🥳")
+            break
+        elif player_1_wins:
+            hf.print_boards([board_1, board_2])
+            print(f"\n🎉🥳 {hf.OKGREEN}You won! Congratulations!{hf.ENDC} 🎉🥳")
+            break
+        elif player_2_wins:
+            hf.print_boards([board_1, board_2])
+            print(f"\n🎉🥳 {hf.FAIL}You lose. Maybe try again?{hf.ENDC} 🎉🥳")
+            break
