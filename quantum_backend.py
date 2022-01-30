@@ -4,6 +4,7 @@ from quantuminspire.qiskit import QI
 def get_QI_backend(backend_type = "QX single-node simulator"):
     """
     Returns the backend needed for Qiskit QuantumCircuit execution.
+    Reads a file named 'cred.txt' containing your Quantum-Inspire email and password for authentication.
 
     Parameter
     ---------
