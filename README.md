@@ -7,7 +7,7 @@
 * [Bernard Wo](https://github.com/bernwo) MSc Applied Physics @ Delft University of Technology,
 * [Oskar Słowik](https://github.com/Feigenbaum4669) PhD candidate @ Center for Theoretical Physics PAS,
 * Wridhdhisom Karar,
-* [Fatma Türkü Tatar](https://github.com/turkutatar), Junior Electrical Engineering Undergraduate @ Cankaya University
+* [Fatma Türkü Tatar](https://github.com/turkutatar), Electrical Engineering Undergraduate @ Cankaya University
 
 ## Documentation
 * Presentation [Slides](https://docs.google.com/presentation/d/1AlDr8H5LY_8CyQQnUTHNoNZCA1F4KANMGV6-wCRXGGM/edit?usp=sharing)
