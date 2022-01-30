@@ -104,8 +104,10 @@ def execute_QuantumCircuit(input_str, backend_type="QX single-node simulator", s
     ---------
         input_str: str
             Input string specifying the type of error on the set of 5 data qubits. In this case it is limited to the set of single-qubit Pauli errors.
+
         backend_type: str
             Valid inputs are 'Spin-2', 'Starmon-5', 'QX-34-L', 'QX single-node simulator'. Run QI.backends() to check the list.
+            
         shots: int
             Number of shots to execute.
 
