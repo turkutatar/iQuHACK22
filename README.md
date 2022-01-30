@@ -31,11 +31,11 @@ The above steps are repeated between the Player A and B, until one wins.
 
 
 ### What is quantum about this game?
-
+We are mapping probabilistic syndromes which is not possible with regular computers.
 
 
 ### How to run the code?
-
+Run main.py
 
 
 ### Our team's personal experience on the iQuHACK weekend
