@@ -5,6 +5,8 @@
 ## Team
 Abhay Kamble, Bernard Wo, Oskar Slovik, Wridhdhisom Karar, Fatma Türkü Tatar
 
+Our presentation is available in a PDF format in this repo.
+
 ### QEC Preliminaries 
 The [[5,1,3]] code is a five qubit quantum error correction code (QECC) which uses 9 qubits in total, 5 data qubits and 4 ancilla qubits. This code can handle atmost one arbitrary Pauli error on a single qubit, i.e. X/Y/Z error on any one of the qubits.
 
@@ -33,6 +35,11 @@ The above steps are repeated between the Player A and B, until one wins.
 
 
 ### How to run the code?
+
+
+
+### Our team's personal experience on the iQuHACK weekend
+Our team is highly diverse in terms of nationalies and education levels. We created a supportive and hard working environment together and everyone did their part as perfect as it can be within 24 hours. We are glad we hacked together:)
 
 
 
