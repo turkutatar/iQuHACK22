@@ -27,7 +27,15 @@ Quantum-inspire returns the syndrome, and Player A and B mark their correspondin
 The above steps are repeated between the Player A and B, until one wins.
 
 
+
+### What is quantum about this game?
+
+
+
 ### How to run the code?
+
+
+
 
 
 
