@@ -96,3 +96,25 @@ def generate_QuantumCircuit(input_str: str) -> QuantumCircuit:
     qc.measure(ancilla_qubits,creg)
     return qc
 
+def execute_QuantumCircuit(input_str, backend_type="QX single-node simulator", shots=512):
+    """
+    Creates and executes the five-qubit code quantum circuit using the Quantum-Inspire backend.
+
+    Parameter
+    ---------
+        input_str: str
+            Input string specifying the type of error on the set of 5 data qubits. In this case it is limited to the set of single-qubit Pauli errors.
+        backend_type: str
+            Valid inputs are 'Spin-2', 'Starmon-5', 'QX-34-L', 'QX single-node simulator'. Run QI.backends() to check the list.
+        shots: int
+            Number of shots to execute.
+
+    Return
+    ------
+        qc_job: quantuminspire.qiskit.qi_job.QIJob
+            Qiskit job object which contain the execution and measurement results.
+    """
+    backend = get_QI_backend(backend_type)
+    qc = generate_QuantumCircuit(input_str)
+    qc_job = execute(qc,backend=backend,shots=shots)
+    return qc_job
