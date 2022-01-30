@@ -3,7 +3,7 @@
 # Project : QEC Bingo Game
 
 ## Team
-* Abhay Kamble,
+* [Abhay Kamble](https://github.com/abzsd), CS undergrad @ BITS Goa
 * [Bernard Wo](https://github.com/bernwo) MSc Applied Physics @ Delft University of Technology,
 * Oskar Slovik,
 * Wridhdhisom Karar,
@@ -15,12 +15,12 @@
 * Jupyter Notebook in [Repo](https://github.com/turkutatar/iQuHACK22/blob/QEC-Bingo-v2.0/main.ipynb)
 
 ### Technologies Used
-QX single-node simulator Quantum-Inspire backend
+```QX single-node simulator``` Quantum-Inspire backend
 
 ### QEC Preliminaries 
 The [[5,1,3]] code is a five qubit quantum error correction code (QECC) which uses 9 qubits in total, 5 data qubits and 4 ancilla qubits. This code can handle atmost one arbitrary Pauli error on a single qubit, i.e. X/Y/Z error on any one of the qubits.
 
-### Layout 
+## Layout 
 The basic layout of the game is a 4x4 grid which contains numbers ranging from 0 to 15, i.e. 0000 to 1111 in binary. In the beginning the grid is randomly generated, and each player has a separate grid.
 
 ![ex_grid](https://user-images.githubusercontent.com/73556839/151690729-09667da5-074a-458c-b45c-01ee4809add7.png)
@@ -41,7 +41,7 @@ The above steps are repeated between the Player A and B, until one wins.
 We are mapping probabilistic syndromes which is not possible with regular computers.
 
 ### How to run the code?
-Run main.py
+Run ```main.py```
 
 ### Our team's personal experience on the iQuHACK weekend
 Our team is highly diverse in terms of nationalies and education levels. We created a supportive and hard working environment together and everyone did their part as perfect as it can be within 24 hours. We are glad we hacked together:)
