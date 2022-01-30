@@ -1,5 +1,25 @@
 from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister, execute, BasicAer
-# import numpy as np
+from quantuminspire.qiskit import QI
+
+def get_QI_backend(backend_type = "QX single-node simulator"):
+    """
+    Returns the backend needed for Qiskit QuantumCircuit execution.
+
+    Parameter
+    ---------
+        backend_type: str
+            Valid inputs are 'Spin-2', 'Starmon-5', 'QX-34-L', 'QX single-node simulator'. Run QI.backends() to check the list.
+
+    Return
+    ------
+        qi_backend: quantuminspire.qiskit.backend_qx.QuantumInspireBackend
+            Object to be used to specify the backend when executing a Qiskit QuantumCircuit object.
+    """
+    with open('cred.txt','r') as f:
+        creds = f.readlines()
+    QI.set_authentication_details(creds[0].rstrip(),creds[1].rstrip())
+    qi_backend = QI.get_backend(backend_type)
+    return qi_backend
 
 # To-Do keep track of used inputs.
 def generate_QuantumCircuit(input_str: str) -> QuantumCircuit:
@@ -74,3 +94,4 @@ def generate_QuantumCircuit(input_str: str) -> QuantumCircuit:
     # Add the measurements into the circuit
     qc.measure(ancilla_qubits,creg)
     return qc
+
