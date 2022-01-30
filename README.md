@@ -20,7 +20,7 @@
 ### QEC Preliminaries 
 The [[5,1,3]] code is a five qubit quantum error correction code (QECC) which uses 9 qubits in total: 5 physical qubits and 4 ancilla qubits. This code encodes one logical qubit and can correct an arbitrary single qubit error, e.g. X/Y/Z error on any of physical qubits.
 
-### Layout 
+## Layout 
 The basic layout of the game is a 4x4 grid which contains numbers ranging from 0 to 15, i.e. 0000 to 1111 in binary. Those numbers correspond to all possible error symdromes. In the beginning the grid is randomly generated, and each player has a separate grid.
 
 ![ex_grid](https://user-images.githubusercontent.com/73556839/151690729-09667da5-074a-458c-b45c-01ee4809add7.png)
